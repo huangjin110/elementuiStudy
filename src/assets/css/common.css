@@ -1,0 +1,6 @@
+html,body,#app{
+    height: 100%;
+}
+div{
+    margin-bottom: 10px;
+}
