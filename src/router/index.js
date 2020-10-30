@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,14 +12,21 @@ const routes = [
   {
     path: '/button',
     name: 'Button',
-    component: () => import(/* webpackChunkName: "button" */ '../views/button/index')
-  }
+    component: () =>
+      import(/* webpackChunkName: "button" */ '../views/button/index'),
+  },
+  {
+    path: '/link',
+    name: 'Link',
+    component: () =>
+      import(/* webpackChunkName: "link" */ '../views/link/index'),
+  },
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
 })
 
 export default router
