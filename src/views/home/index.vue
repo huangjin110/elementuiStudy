@@ -3,7 +3,7 @@
     <el-container>
       <el-aside width="200px">
         <div class="log">element-Robben</div>
-        <el-menu router>
+        <el-menu router unique-opened>
           <el-submenu
             v-for="(item, index) in menu"
             :index="item.id"
@@ -25,7 +25,7 @@
         </el-menu>
       </el-aside>
       <el-container>
-        <el-header>{{ $route.name || 'Element' }}</el-header>
+        <el-header>{{ $route.name || "Element" }}</el-header>
         <el-main>
           <router-view />
         </el-main>
@@ -40,21 +40,27 @@ export default {
     return {
       menu: [
         {
-          title: '按钮',
-          icon: 'el-icon-plus',
-          submenu: [{ title: '按钮1', route: 'button' }],
-          id: '1',
+          title: "按钮",
+          icon: "el-icon-plus",
+          submenu: [{ title: "按钮1", route: "button" }],
+          id: "1",
         },
         {
-          title: '文字链接',
-          icon: 'el-icon-plus',
-          submenu: [{ title: '文字链接', route: 'link' }],
-          id: '2',
+          title: "文字链接",
+          icon: "el-icon-plus",
+          submenu: [{ title: "文字链接", route: "link" }],
+          id: "2",
+        },
+        {
+          title: "表单",
+          icon: "el-icon-plus",
+          submenu: [{ title: "表单", route: "form" }],
+          id: "3",
         },
       ],
-    }
+    };
   },
-}
+};
 </script>
 <style lang="scss" scoped>
 .home {

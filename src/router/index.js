@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   // {
@@ -10,23 +10,39 @@ const routes = [
   //   component: () => import(/* webpackChunkName: "home" */ '../views/home/index.vue')
   // },
   {
-    path: '/button',
-    name: 'Button',
+    path: "/button",
+    name: "Button",
     component: () =>
-      import(/* webpackChunkName: "button" */ '../views/button/index'),
+      import(/* webpackChunkName: "button" */ "../views/button/index"),
   },
   {
-    path: '/link',
-    name: 'Link',
+    path: "/link",
+    name: "Link",
     component: () =>
-      import(/* webpackChunkName: "link" */ '../views/link/index'),
+      import(/* webpackChunkName: "link" */ "../views/link/index"),
   },
-]
+  {
+    path: "/form",
+    name: "Form",
+    component: () =>
+      import(/* webpackChunkName: "form" */ "../views/form/index"),
+    children: [
+      {
+        path: "radio",
+        name: "Radio",
+        component: () =>
+          import(
+            /* webpackChunkName: "form" */ "../views/form/components/radio/index"
+          ),
+      },
+    ],
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes,
-})
+});
 
-export default router
+export default router;
