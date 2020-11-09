@@ -4,9 +4,10 @@
     <div class="mb10">
       <span class="label">姓名：</span>
       <el-input
+        label="姓名"
         class="inline-input"
         prefix-icon="el-icon-search"
-        v-model="input1"
+        v-model.number="input1"
         @change="change"
       />
       <!-- readOnly（原生属性，不能输入没有禁用样式）和 disabled: 推荐使用disabled -->
@@ -76,6 +77,8 @@
           style="width:540px"
           v-model="input5"
           @change="change"
+          maxlength="10"
+          show-word-limit
         >
           <el-select v-model="select" slot="prepend" placeholder="请选择">
             <el-option label="餐厅名" value="1"></el-option>
@@ -89,7 +92,7 @@
       </div>
     </div>
     <!-- 模糊搜索 fetch-suggestion属性接受一个方法，输入内容时触发，@select选择搜索内容事件-->
-    <div class="mb10">
+    <div class="mb10 ml200">
       <div>
         <h5>模糊搜索</h5>
         <el-autocomplete
@@ -102,12 +105,33 @@
         </el-autocomplete>
       </div>
     </div>
-    <!-- 文本域 -->
-    <div class="mb10">
+    <!-- 文本域 rows设置默认行数，当autosize为false才生效 -->
+    <div class="mb10 ml200">
       <div>
         <span>文本域</span>
-        <el-input class="textarea" v-model="text" type="textarea" />
+        <el-input
+          class="textarea"
+          v-model="text"
+          type="textarea"
+          :rows="3"
+          maxlength="30"
+          show-word-limit
+        />
       </div>
+    </div>
+
+    <!-- 计数器 -->
+    <div>
+      <span class="label">计数器：</span>
+      <el-input-number
+        class="number-input"
+        v-model="num"
+        :precision="2"
+        :controls="false"
+        :min="1"
+        :max="10"
+        @change="change"
+      ></el-input-number>
     </div>
   </div>
 </template>
@@ -225,6 +249,7 @@ export default {
       select: "",
       search: "",
       text: "",
+      num: 1,
     };
   },
   methods: {
@@ -263,7 +288,7 @@ export default {
       width: 80px;
       background: #ffffff;
     }
-    /deep/.el-textarea__inner{
+    /deep/.el-textarea__inner {
       width: 540px;
     }
   }
@@ -271,6 +296,13 @@ export default {
     display: inline-block;
     width: 200px;
     text-align: right;
+  }
+  .ml200 {
+    margin-left: 200px;
+    width: 540px;
+  }
+  .number-input {
+    width: 100px;
   }
 }
 </style>
