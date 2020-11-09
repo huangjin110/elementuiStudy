@@ -4,11 +4,11 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Root',
-  //   component: () => import(/* webpackChunkName: "home" */ '../views/home/index.vue')
-  // },
+  {
+    path: '/',
+    name: 'Element',
+    component: ()=>import(/* webpackChunkName: "404" */ "../views/notfind/index")
+  },
   {
     path: "/button",
     name: "Button",

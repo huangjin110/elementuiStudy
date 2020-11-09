@@ -2,7 +2,7 @@
   <div class="checkbox">
     <!-- 同单选框一样，也有多选框和多选框组,建议使用多选框组更加方便，多选框组绑定的值是一个数组类型，更能反应当前的选项-->
     <!-- 多选框 -->
-    <div class="margin-b10px">
+    <div class="mb10">
       <el-checkbox
         v-model="checked"
         true-label="1"
@@ -35,8 +35,8 @@
       <el-checkbox-group
         v-model="checkListNumber"
         @change="change"
-        min="1"
-        max="3"
+        :min="1"
+        :max="3"
       >
         <!-- el-checkbox label属性只有在使用多选框组的时候有用效 -->
         <el-checkbox label="1">C罗</el-checkbox>
@@ -68,7 +68,6 @@ export default {
     // 点击全选按钮
     handleSelectAll(val) {
       console.log('val', val)
-
       this.checkList = val ? ['1', '2'] : []
       this.indeterminate = false
     },

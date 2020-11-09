@@ -17,19 +17,22 @@
 <script>
 import radio from './components/radio/index'
 import checkbox from './components/checkbox/index'
+import myInput from './components/input/index'
 
 
 export default {
     components:{
         radio,
-        checkbox
+        checkbox,
+        myInput
     },
     data(){
         return{
             tabPosition:'radio',
             typeList:[
                 {label:'radio',name:'单选'},
-                {label:'checkbox',name:'多选框'}
+                {label:'checkbox',name:'多选框'},
+                {label:'my-Input',name:'输入框'}
             ]
         }
     }

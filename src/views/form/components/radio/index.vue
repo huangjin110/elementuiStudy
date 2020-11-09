@@ -4,7 +4,7 @@
       <!-- 单选和单选框组：非单选框组v-model绑定在每一个el-radio上，单选框组v-model绑定在el-radio-group上面 -->
       <!-- 单选 绑定多个value和多个change事件--> 
       <h4>单选</h4>
-      <div class="margin-b10px">
+      <div class="mb10">
           <el-radio v-model="radio" label="1" @change="change">罗本</el-radio>
           <el-radio v-model="radio" label="2" @change="change">c罗</el-radio>
           <el-radio v-model="radio" label="3" @change="change">梅西</el-radio>
