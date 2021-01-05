@@ -1,41 +1,33 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import elementComponents from "./element";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Element',
-    component: ()=>import(/* webpackChunkName: "404" */ "../views/notfind/index")
+    path: "/login",
+    name: "登录",
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../views/login/index"),
   },
   {
-    path: "/button",
-    name: "Button",
-    component: () =>
-      import(/* webpackChunkName: "button" */ "../views/button/index"),
+    path: "/",
+    name: "root",
+    redirect: { path: "/element" },
   },
   {
-    path: "/link",
-    name: "Link",
+    path: "/element",
+    name: "Element",
     component: () =>
-      import(/* webpackChunkName: "link" */ "../views/link/index"),
+      import(/* webpackChunkName: "404" */ "../views/home/index"),
+    children: [...elementComponents],
   },
   {
-    path: "/form",
-    name: "Form",
+    path: "*",
+    name: "notFound",
     component: () =>
-      import(/* webpackChunkName: "form" */ "../views/form/index"),
-    children: [
-      {
-        path: "radio",
-        name: "Radio",
-        component: () =>
-          import(
-            /* webpackChunkName: "form" */ "../views/form/components/radio/index"
-          ),
-      },
-    ],
+      import(/* webpackChunkName: "login" */ "../views/notfind/index"),
   },
 ];
 
@@ -43,6 +35,23 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  let username = localStorage.getItem("username");
+  if (username !== "huangjin") {
+    //没有登录
+    if (to.path !== "/login") {
+      next("./login");
+    } else {
+      next();
+    }
+  } else {
+    if (to.path === "/login") {
+      next("/");
+    }
+    next();
+  }
 });
 
 export default router;

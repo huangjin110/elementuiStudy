@@ -44,7 +44,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  created() {
+    console.log('$route',this.$route);
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,7 +1,10 @@
 <template>
   <div class="form">
+    <div>{{$route.query.tab}}</div>
+    <div>{{$route.params.tab}}</div>
+
     <!-- tab -->
-    <el-radio-group v-model="tabPosition" style="margin-bottom: 30px;">
+    <el-radio-group v-model="tabPosition" style="margin-bottom: 30px;" @change="change">
       <el-radio-button
         :label="item.label"
         v-for="(item, index) in typeList"
@@ -37,6 +40,17 @@ export default {
       ],
     };
   },
+  methods:{
+    change(val){
+      console.log(val);
+      this.$router.push({
+        name:'Form',
+        query:{
+          tab:val
+        }
+      })
+    }
+  }
 };
 </script>
 

@@ -26,6 +26,7 @@
       </el-aside>
       <el-container>
         <el-header>{{ $route.name || "Element" }}</el-header>
+        <div>{{ res }}</div>
         <el-main>
           <router-view />
         </el-main>
@@ -42,23 +43,36 @@ export default {
         {
           title: "按钮",
           icon: "el-icon-plus",
-          submenu: [{ title: "按钮1", route: "button" }],
+          submenu: [{ title: "按钮1", route: "/element/button" }],
           id: "1",
         },
         {
           title: "文字链接",
           icon: "el-icon-plus",
-          submenu: [{ title: "文字链接", route: "link" }],
+          submenu: [{ title: "文字链接", route: "/element/link" }],
           id: "2",
         },
         {
           title: "表单",
           icon: "el-icon-plus",
-          submenu: [{ title: "表单", route: "form" }],
+          submenu: [{ title: "表单", route: "/element/form" }],
           id: "3",
         },
       ],
+      res:''
     };
+  },
+  created() {
+    this.axios
+      .get("/api/get")
+      .then((res) => {
+        // console.log(res);
+        console.log(res.data.name);
+        this.res = res.data.name;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>

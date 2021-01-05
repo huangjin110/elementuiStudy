@@ -41,6 +41,7 @@
       multiple
       clearable
       filterable
+      filter-method
       @change="change"
     >
       <el-option
