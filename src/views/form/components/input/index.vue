@@ -1,5 +1,18 @@
 <template>
   <div class="input">
+    <!-- 自定义指令检验输入金额格式 -->
+    <div class="mb10">
+      <span class="label">指令：</span>
+      <el-input
+        v-focus
+        v-input-filter
+        label="指令"
+        class="inline-input"
+        prefix-icon="el-icon-search"
+        v-model="input8"
+        @change="change"
+      />
+    </div>
     <!-- el-input 默认占整行，要变成行内快和设置宽度需要自己单独设置 -->
     <div class="mb10">
       <span class="label">姓名：</span>
@@ -246,6 +259,7 @@ export default {
       input3: "",
       input4: "",
       input5: "",
+      input8: null,
       select: "",
       search: "",
       text: "",
@@ -273,6 +287,16 @@ export default {
     handleSelect(val) {
       this.select = val.value;
       console.log(1, this.select);
+    },
+  },
+  directives: {
+    // 自定义指令，限制输入框的输入内容
+    focus: {
+      // 指令的定义
+      inserted: function(el) {
+        let input = el.querySelector('input')
+        input.focus()
+      },
     },
   },
 };

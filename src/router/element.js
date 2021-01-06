@@ -12,7 +12,7 @@ const elementComponents = [
       import(/* webpackChunkName: "link" */ "../views/link/index"),
   },
   {
-    path: "form/:tab",
+    path: "form",
     name: "Form",
     component: () =>
       import(/* webpackChunkName: "form" */ "../views/form/index"),
