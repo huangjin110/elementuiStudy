@@ -3,7 +3,7 @@
     <el-container>
       <el-aside width="200px">
         <div class="log">element-Robben</div>
-        <el-menu router unique-opened>
+        <el-menu style="background: #cccccc" router unique-opened>
           <el-submenu
             v-for="(item, index) in menu"
             :index="item.id"
@@ -58,28 +58,46 @@ export default {
           submenu: [{ title: "表单", route: "/element/form" }],
           id: "3",
         },
+        {
+          title: "动画",
+          icon: "el-icon-plus",
+          submenu: [{ title: "动画", route: "/element/transform" }],
+          id: "4",
+        },
+        {
+          title: "css",
+          icon: "el-icon-plus",
+          submenu: [{ title: "css测试", route: "/element/css" }],
+          id: "45",
+        },
+        {
+          title: "antv",
+          icon: "el-icon-plus",
+          submenu: [{ title: "f2测试", route: "/element/f2" }],
+          id: "46",
+        },
+        {
+          title: "jsdom",
+          icon: "el-icon-plus",
+          submenu: [{ title: "js测试", route: "/element/js" }],
+          id: "47",
+        },
       ],
-      res:''
+      res: "",
     };
   },
-  created() {
-    this.axios
-      .get("/api/get")
-      .then((res) => {
-        // console.log(res);
-        console.log(res.data.name);
-        this.res = res.data.name;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  async created() {
+    const res = await this.axios.get("/xzqh/query", {
+      params: { fid: 0, key: "c83db9e59f54769da45dde6d4527a6d2" },
+    });
+    console.log(res);
   },
 };
 </script>
 <style lang="scss" scoped>
 .home {
   height: 100%;
-
+  background: #cccccc;
   .log {
     display: flex;
     align-items: center;

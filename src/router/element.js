@@ -27,6 +27,31 @@ const elementComponents = [
       },
     ],
   },
+  {
+    path: "transform",
+    name: "transform",
+    component: () =>
+      import(/* webpackChunkName: "transform" */ "../views/transform/index"),
+  },
+  {
+    path: "css",
+    name: "css",
+    component: () =>
+      import(/* webpackChunkName: "transform" */ "../views/cssTest/index"),
+  },
+  {
+    path: "f2",
+    name: "f2",
+    component: () =>
+      import(/* webpackChunkName: "transform" */ "../views/antv/f2/index"),
+  },
+  {
+    path: "js",
+    name: "jsdom",
+    component: () =>
+      import(/* webpackChunkName: "transform" */ "../views/js/index"),
+  },
+  
 ];
 
 export default elementComponents

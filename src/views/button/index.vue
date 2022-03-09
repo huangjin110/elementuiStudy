@@ -7,7 +7,7 @@
       <el-button type="primary" @click="$router.push({ path: 'link' })"
         >link</el-button
       >
-      <el-button type="success">按钮</el-button>
+      <el-button type="success" @click="1===1?fn(1):fn(2)">按钮</el-button>
       <el-button type="warning">按钮</el-button>
       <el-button type="danger">按钮</el-button>
     </div>
@@ -48,6 +48,11 @@ export default {
   created() {
     console.log('$route',this.$route);
   },
+  methods:{
+    fn(index){
+      alert(index)
+    }
+  }
 };
 </script>
 
