@@ -1,8 +1,6 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import elementComponents from "./element";
 
-Vue.use(VueRouter);
 
 const routes = [
   {
@@ -24,16 +22,16 @@ const routes = [
     children: [...elementComponents],
   },
   {
-    path: "*",
-    name: "notFound",
+    path: '/:pathMatch(.*)',
+    name: "not-Found",
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/notfind/index"),
-  },
+  }
 ];
 
-const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
+const router = createRouter({
+  "history": createWebHistory(),
+  // base: process.env.BASE_URL,
   routes,
 });
 

@@ -4,7 +4,7 @@
     <!-- herf是原生属性，跳转会刷新页面，体验不好，不建议用 -->
     <el-link>文字链接</el-link>
     <el-link type="primary" href="button">去button</el-link>
-    <el-link type="success" @click.native="$router.push({ path: 'button' })"
+    <el-link type="success" @click="$router.push({ path: 'button' })"
       >去button</el-link
     >
     <el-link type="warning">文字链接</el-link>
@@ -24,7 +24,7 @@ export default {}
 
 <style lang="scss" scoped>
 .link {
-  /deep/.el-link {
+  :deep(.el-link) {
     margin: 0 10px;
   }
   .link-btn {

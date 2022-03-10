@@ -1,11 +1,12 @@
 import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import ElementUI from 'element-ui'
+import ElementPlus from 'element-plus'
 import axios from '@/api/http'
 import vueAxios from 'vue-axios'
-import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/common.css'
+import 'element-plus/dist/index.css'
 
 // 自定义指令
 import inputFilterMoney from '@/directives/inputFilterMoney'
@@ -13,14 +14,13 @@ import inputFilterMoney from '@/directives/inputFilterMoney'
 import { overTextDom } from '@/utils/utlis.js'
 
 Vue.config.productionTip = false
-Vue.prototype.overTextDom = overTextDom
-Vue.use(ElementUI)
+Vue.use(ElementPlus)
 Vue.use(vueAxios,axios)
 
 // 注册自定义指令
 Vue.directive('inputFilter',inputFilterMoney)
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app')
+const app = createApp(App)
+app.config.globalProperties.$overTextDom = overTextDom
+app.use(router)
+app.mount('#app')

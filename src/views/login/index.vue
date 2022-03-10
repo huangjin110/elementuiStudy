@@ -53,7 +53,7 @@ export default {
   .form {
     width: 400px;
 
-    /deep/ .el-form-item__label {
+    :deep(.el-form-item__label) {
       width: 100px;
     }
   }

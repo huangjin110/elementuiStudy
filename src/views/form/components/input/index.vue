@@ -33,7 +33,7 @@
       />
       <!-- 插槽方式 -->
       <el-input class="inline-input" v-model="input2" @change="change" readonly>
-        <i slot="prefix" class="el-input__icon el-icon-edit"></i>
+        <i slot:prefix class="el-input__icon el-icon-edit"></i>
       </el-input>
     </div>
 
@@ -65,9 +65,7 @@
       <div class="mb10">
         <span class="label">折扣：</span>
         <el-input class="inline-input" v-model="input5" @change="change">
-          <template slot="append">
-            %
-          </template>
+          <template v-slot:append> % </template>
         </el-input>
       </div>
       <div class="mb10">
@@ -75,30 +73,28 @@
         <el-input
           class="inline-input"
           v-model="input5"
-          style="width:540px"
+          style="width: 540px"
           @change="change"
         >
-          <template slot="prepend">
-            http://
-          </template>
+          <template v-slot:prepend> http:// </template>
         </el-input>
       </div>
       <div class="mb10">
         <span class="label">网址：</span>
         <el-input
           class="inline-input"
-          style="width:540px"
+          style="width: 540px"
           v-model="input5"
           @change="change"
           maxlength="10"
           show-word-limit
         >
-          <el-select v-model="select" slot="prepend" placeholder="请选择">
+          <el-select v-model="select" slot:prepend placeholder="请选择">
             <el-option label="餐厅名" value="1"></el-option>
             <el-option label="订单号" value="2"></el-option>
             <el-option label="用户电话" value="3"></el-option>
           </el-select>
-          <template slot="append">
+          <template v-slot:append>
             <el-button icon="el-icon-search"></el-button>
           </template>
         </el-input>
@@ -293,7 +289,7 @@ export default {
     // 自定义指令，限制输入框的输入内容
     focus: {
       // 指令的定义
-      inserted: function(el) {
+      inserted: function (el) {
         let input = el.querySelector('input')
         input.focus()
       },
@@ -308,11 +304,11 @@ export default {
   .inline-input {
     margin-right: 10px;
     width: 180px;
-    /deep/ .el-input-group__prepend {
+    :deep(.el-input-group__prepend) {
       width: 80px;
       background: #ffffff;
     }
-    /deep/.el-textarea__inner {
+    :deep(.el-textarea__inner) {
       width: 540px;
     }
   }

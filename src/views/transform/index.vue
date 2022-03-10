@@ -74,6 +74,10 @@ export default {
 .bg {
   position: relative;
   width: 200px;
+  img{
+    width: 200px;
+    height: 200px;
+  }
   .bg-2 {
     position: absolute;
     width: 100%;

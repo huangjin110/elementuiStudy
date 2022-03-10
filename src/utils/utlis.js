@@ -1,14 +1,14 @@
 /**
 * @description 容器超出省略，后面跟随需求文本
-* @param {String} ref 元素ref标识
+* @param {String} vueEL 元素ref标识
 * @param {Number} rows 省略显示的行数bu
 * @param {Number} maxrows 最大显示行数，可以不传
 * @param {String} str 元素包含的内容
 * @param {String} endstr 超出省略结尾跟随的内容，可以传
 */
-export function overTextDom(ref, rows, maxrows = null ,str, endstr) {
+export function overTextDom(vueEL, rows, maxrows = null ,str, endstr) {
     console.log('[ this ] >', this)
-    let el = this.$refs[ref]
+    let el = vueEL
     if (!endstr) {
         endstr =
             '... <span id="overtext-entend" style="color:#999999">展开全文</span>'
@@ -29,10 +29,12 @@ export function overTextDom(ref, rows, maxrows = null ,str, endstr) {
 
     let temp = str + endstr
     let isExnd = true
+    console.log(el.offsetHeight,overHeight)
     while (el.offsetHeight > overHeight) {
         let reg = new RegExp(`(.*)${temp[temp.length - 1 - endstr.length]}`)
         temp = temp.replace(reg, '')
         el.innerHTML = temp
+        console.log('[ el.offsetHeight  ] >', el.offsetHeight )
         console.log('%c [ temp ]-35', 'font-size:13px; background:pink; color:#bf2c9f;', temp)
     }
     isExnd = false

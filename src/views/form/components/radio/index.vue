@@ -49,7 +49,7 @@ created(){
 
 <style lang="scss" scoped>
 .radio{
-    /deep/.el-radio{
+    :deep(.el-radio){
         // width: 66px;
         text-align: left;
     }
