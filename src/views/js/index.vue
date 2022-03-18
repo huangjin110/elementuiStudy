@@ -13,8 +13,6 @@ export default {
     const str1 = ref(str)
     onMounted(() => {
       const { appContext: { config: { globalProperties } }, refs } = getCurrentInstance()
-      console.log('[ ctx ] >', globalProperties)
-      console.log('mounted被执行111');
       // overTextDom()
       globalProperties.$overTextDom(refs['111'], 2, 4, str1.value)
     })

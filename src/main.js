@@ -13,14 +13,11 @@ import inputFilterMoney from '@/directives/inputFilterMoney'
 // Utils
 import { overTextDom } from '@/utils/utlis.js'
 
-Vue.config.productionTip = false
-Vue.use(ElementPlus)
-Vue.use(vueAxios,axios)
-
-// 注册自定义指令
-Vue.directive('inputFilter',inputFilterMoney)
-
 const app = createApp(App)
 app.config.globalProperties.$overTextDom = overTextDom
+app.config.productionTip = false
 app.use(router)
+app.use(vueAxios,axios)
+app.use(ElementPlus)
+app.directive('inputFilter',inputFilterMoney)
 app.mount('#app')

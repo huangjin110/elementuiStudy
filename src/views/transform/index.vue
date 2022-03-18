@@ -3,7 +3,12 @@
     动画
     <div class="cire1"></div>
     <!-- 通知，广告，无限循环滚动 -->
-    <NoticeBar v-show="isShow"  @replay="handleReplay" :content="content"></NoticeBar>
+    <NoticeBar
+      v-show="isShow"
+      @replay="handleReplay"
+      :content="content"
+      :delay="2"
+    ></NoticeBar>
     <!-- 镂空文字 -->
     <div class="empty-font">100K豆</div>
     <div class="cire"></div>
@@ -15,27 +20,29 @@
     <div class="text">
       夫卡是激发空手道解放事件发生纠纷是否健对房价肯定发健康的方的附件打开康是封建时代
     </div>
+    <data></data>
   </div>
 </template>
 
 <script>
+import { ref } from '@vue/reactivity';
 import NoticeBar from './components/NoticeBar/index.vue'
+import data from './components/vue3Data/index.vue'
 export default {
   components: {
-    NoticeBar
+    NoticeBar,
+    data
   },
-  data() {
-    return {
-      isShow: true,
-      content: '夫卡是激发空手道解放事件发生纠纷是否健对房价肯定发  type: Number,default: 60'
-    };
-  },
-  mounted() {
-
-  },
-  methods: {
-    handleReplay() {
+  setup() {
+    let isShow = ref(true)
+    let content = ref('夫卡是激发空手道解放事件发生纠纷是否健对房价肯定发  type: Number,default: 60')
+    const handleReplay = () => {
       this.isShow = false
+    }
+    return {
+      isShow,
+      content,
+      handleReplay
     }
   }
 };
@@ -74,7 +81,7 @@ export default {
 .bg {
   position: relative;
   width: 200px;
-  img{
+  img {
     width: 200px;
     height: 200px;
   }

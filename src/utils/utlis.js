@@ -31,11 +31,8 @@ export function overTextDom(vueEL, rows, maxrows = null ,str, endstr) {
     let isExnd = true
     console.log(el.offsetHeight,overHeight)
     while (el.offsetHeight > overHeight) {
-        let reg = new RegExp(`(.*)${temp[temp.length - 1 - endstr.length]}`)
-        temp = temp.replace(reg, '')
+        temp = temp.substring(0, temp.length - endstr.length - 1) + endstr
         el.innerHTML = temp
-        console.log('[ el.offsetHeight  ] >', el.offsetHeight )
-        console.log('%c [ temp ]-35', 'font-size:13px; background:pink; color:#bf2c9f;', temp)
     }
     isExnd = false
     el.addEventListener('click', (e) => {

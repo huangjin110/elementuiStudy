@@ -4,7 +4,7 @@
       <el-aside width="200px">
         <div class="log" @click="changeLoge('jjjj')">{{ name }}</div>
         <el-menu style="background: #cccccc" router unique-opened>
-          <el-submenu
+          <el-sub-menu
             v-for="(item, index) in menu"
             :index="item.id"
             :key="item + index"
@@ -21,7 +21,7 @@
                 citem.title
               }}</el-menu-item>
             </el-menu-item-group>
-          </el-submenu>
+          </el-sub-menu>
         </el-menu>
       </el-aside>
       <el-container>
@@ -51,8 +51,6 @@ export default {
     }
   },
   setup(prop, context) {
-    console.log('[ prop ] >', prop.user)
-    console.log('[ context ] >', context)
     const menu = [
       {
         title: "按钮",
@@ -106,9 +104,6 @@ export default {
     const changeLoge = (param) => {
       name.value = param
     }
-    onMounted(()=>{
-      console.log('mounted被执行');
-    })
     /**
      * 1. return需要暴露给组件其他部分或外部使用的变量或方法
      */

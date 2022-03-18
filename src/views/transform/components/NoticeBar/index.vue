@@ -15,12 +15,13 @@
         'animation-delay': mydelay + 's',
       }"
     >
-      {{ content || '请输入内容'}}
+      {{ content || "请输入内容" }}
     </span>
   </div>
 </template>
 
 <script>
+import { getCurrentInstance, onMounted, ref, toRefs, watch } from 'vue';
 export default {
   name: "NoticeBar",
   props: {
@@ -30,44 +31,54 @@ export default {
     },
     delay: {
       type: Number,
-      default: 2
+      default: 0
     },
     content: {
       type: String,
       default: ''
     }
   },
-  watch: {
-    delay(v) {
-      this.mydelay = v
+  setup(props) {
+
+    let duration = ref(0) //动画时间,
+    let paddingLelf = ref(0)
+    let { speed, content } = props
+    let mydelay = ref(0)
+
+    const  install = getCurrentInstance()
+    const transform = () => {
+      /** 
+        * 1. speed必须保持不变
+        * 2. 重复动画时需要加上父容器的宽度offsetWidth
+       */
+      const contentEL = document.querySelector(".play");
+      const offsetWidth = document.querySelector(".wrap").offsetWidth;
+      const contentWidth = contentEL.offsetWidth
+      duration.value = contentWidth / speed;
+      contentEL.addEventListener("animationend", () => {
+        // 抛出一个动话重复开始事件
+        // install.emit('replay')
+        paddingLelf.value = offsetWidth;
+        duration.value = (contentWidth + offsetWidth) / speed;
+        mydelay.value = 0;
+        contentEL.classList.remove("play");
+        contentEL.classList.add("play-infinite");
+      });
+
     }
-  },
-  data() {
+
+    onMounted(transform)
+
+    watch(() => props.delay, (newVal, oldVal) => {
+      mydelay.value = newVal
+    }, { immediate: true })
     return {
-      paddingLelf: 0,
-      duration: "", //动画时间,
-      mydelay: 2
-    };
-  },
-  mounted() {
-    /** 
-     * 1. speed必须保持不变
-     * 2. 重复动画时需要加上父容器的宽度offsetWidth
-    */
-    const content = document.querySelector(".play");
-    const offsetWidth = document.querySelector(".wrap").offsetWidth;
-    const contentWidth = content.offsetWidth
-    this.duration = contentWidth / this.speed;
-    content.addEventListener("animationend", () => {
-      // 抛出一个动话重复开始事件
-      this.$emit('replay')
-      this.paddingLelf = offsetWidth;
-      this.duration = (contentWidth + offsetWidth) / this.speed;
-      this.mydelay = 0;
-      content.classList.remove("play");
-      content.classList.add("play-infinite");
-    });
-  },
+      duration,
+      content,
+      mydelay,
+      paddingLelf
+    }
+  }
 };
 </script>
 
@@ -108,7 +119,7 @@ export default {
   }
 }
 .wrap-out {
-  animation: out linear;
+  // animation: out linear;
 }
 .play {
   animation: y-play linear;
