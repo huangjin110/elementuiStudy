@@ -1,7 +1,9 @@
 <template>
   <div class="transform">
     动画
-    <div class="cire1"></div>
+    <div class="cire1" @click="click">1111111</div>
+    <!-- <MyToast v-model="isShow"></MyToast> -->
+
     <!-- 通知，广告，无限循环滚动 -->
     <NoticeBar
       v-show="isShow"
@@ -28,21 +30,32 @@
 import { ref } from '@vue/reactivity';
 import NoticeBar from './components/NoticeBar/index.vue'
 import data from './components/vue3Data/index.vue'
+import { getCurrentInstance } from 'vue'
+// import MyToast from '../../plugins/Toast/index.vue'
 export default {
   components: {
     NoticeBar,
-    data
+    data,
+    // MyToast
   },
-  setup() {
+  setup(prop, context) {
     let isShow = ref(true)
     let content = ref('夫卡是激发空手道解放事件发生纠纷是否健对房价肯定发  type: Number,default: 60')
     const handleReplay = () => {
       this.isShow = false
+
+    }
+    const instance = getCurrentInstance()
+    const globalProperties = instance.appContext.config.globalProperties
+
+    const click = () => {
+      globalProperties.MyToast('请稍后再试')
     }
     return {
       isShow,
       content,
-      handleReplay
+      handleReplay,
+      click
     }
   }
 };

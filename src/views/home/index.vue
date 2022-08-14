@@ -83,9 +83,12 @@ export default {
         id: "45",
       },
       {
-        title: "antv",
+        title: "canvas",
         icon: "el-icon-plus",
-        submenu: [{ title: "f2测试", route: "/element/f2" }],
+        submenu: [
+          { title: "canvas", route: "/element/canvas" },
+          { title: "f2测试", route: "/element/f2" }
+        ],
         id: "46",
       },
       {

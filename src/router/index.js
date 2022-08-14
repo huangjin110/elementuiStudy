@@ -39,15 +39,15 @@ router.beforeEach((to, from, next) => {
   let username = localStorage.getItem("username");
   if (username !== "huangjin") {
     //没有登录
-    if (to.path !== "/login") {
-      next("./login");
-    } else {
+    // if (to.path !== "/login") {
+    //   next("./login");
+    // } else {
       next();
-    }
+    // }
   } else {
-    if (to.path === "/login") {
-      next("/");
-    }
+    // if (to.path === "/login") {
+    //   next("/");
+    // }
     next();
   }
 });

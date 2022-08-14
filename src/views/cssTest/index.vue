@@ -61,14 +61,14 @@ export default {
   .bg {
     width: 100%;
     height: 638px;
-    background: url("C://Users/47450/Desktop/微信图片_20220314111117.jpg")
-      no-repeat;
+    // background: url("C://Users/47450/Desktop/微信图片_20220314111117.jpg")
+      // no-repeat;
     background-size: contain;
   }
   .bg1 {
     height: 400px;
     width: 325px;
-    background: url("C://Users/47450/Desktop/list_bg1.png") no-repeat;
+    // background: url("C://Users/47450/Desktop/list_bg1.png") no-repeat;
     background-size: contain;
   }
   .score-warp {

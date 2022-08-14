@@ -22,7 +22,7 @@ const elementComponents = [
         name: "Radio",
         component: () =>
           import(
-            /* webpackChunkName: "form" */ "../views/form/components/radio/index"
+            /* webpackChunkName: "radio" */ "../views/form/components/radio/index"
           ),
       },
     ],
@@ -40,10 +40,16 @@ const elementComponents = [
       import(/* webpackChunkName: "transform" */ "../views/cssTest/index"),
   },
   {
+    path: "canvas",
+    name: "canvas",
+    component: () =>
+      import(/* webpackChunkName: "canvas" */ "../views/canvas/native/index"),
+  },
+  {
     path: "f2",
     name: "f2",
     component: () =>
-      import(/* webpackChunkName: "transform" */ "../views/antv/f2/index"),
+      import(/* webpackChunkName: "f2" */ "../views/canvas/antv/f2/index"),
   },
   {
     path: "js",
